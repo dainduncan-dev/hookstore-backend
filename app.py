@@ -8,7 +8,7 @@ import os
 
 load_dotenv()
 
-database_uri = "postgresql:" + ":".join(os.environ.get("DATABASE_URI", "").split(":")[1:])
+database_uri = "postgresql:" + ":".join(os.environ.get("DATABASE_URL", "").split(":")[1:])
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 db = SQLAlchemy(app)
