@@ -8,14 +8,14 @@ import os
 
 load_dotenv()
 
-# database_uri = "postgresql:" + ":".join(os.environ.get("DATABASE_URI", "").split(":")[1:])
+database_uri = "postgresql:" + ":".join(os.environ.get("DATABASE_URI", "").split(":")[1:])
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:" + os.environ.get("DATABASE_URI")
+app.config["SQLALCHEMY_DATABASE_URI"] = database_uri
 CORS(app)
 bcrypt = Bcrypt(app)
 
